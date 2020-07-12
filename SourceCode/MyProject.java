@@ -2,45 +2,60 @@ package learnOOAD;
 
 class Gear{
 
-    private int chainring;
-    private int cog;
-    private int rim;
-    private double tire;
+    class data{
+        private int chainring;
+        private int cog;
+        private int rim;
+        private double tire;
+
+        data(int chainring, int cog){
+            this.chainring=chainring;
+            this.cog=cog;
+    
+        }
+        data(int chainring, int cog, int rim, double tire){
+            this.chainring=chainring;
+            this.cog=cog;
+            this.rim=rim;
+            this.tire=tire;
+        }
+
+        private int getChainring(){
+            return mydata.chainring;
+        }
+        private int getCog(){
+            return mydata.cog;
+        }
+        private int getRim(){
+            return mydata.rim;
+        }
+        private double getTire(){
+            return mydata.tire;
+        }
+
+    }
+
+    private data mydata;
 
     Gear(int chainring, int cog){
-        this.chainring=chainring;
-        this.cog=cog;
+        
+        mydata=new data(chainring,cog);
 
     }
     Gear(int chainring, int cog, int rim, double tire){
-        this.chainring=chainring;
-        this.cog=cog;
-        this.rim=rim;
-        this.tire=tire;
+        
+        mydata=new data(chainring,cog,rim,tire);
+
     }
 
-    int getChainring(){
-        return chainring;
-    }
-    int getCog(){
-        return cog;
-    }
-    int getRim(){
-        return rim;
-    }
-    double getTire(){
-        return tire;
+    public double ratio(){
+        return mydata.getChainring()/(double)mydata.getCog();
     }
 
-
-    double ratio(){
-        return getChainring()/(double)getCog();
+    public double diameter(){
+        return ((double)mydata.getRim()+mydata.getTire()*((double)2));
     }
-
-    double diameter(){
-        return ((double)getRim()+getTire()*((double)2));
-    }
-    double gear_inches(){
+    public double gear_inches(){
         return ratio()*diameter();
     }
 
@@ -57,6 +72,7 @@ public class MyProject {
         Gear mygear2=new Gear(52,11,24,1.25);
         System.out.println(mygear2.gear_inches());
 
+        
     }
 
     
