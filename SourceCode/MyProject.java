@@ -1,12 +1,32 @@
 package learnOOAD;
 
+
+
 class Gear{
 
-    class data{
-        private int chainring;
-        private int cog;
+    static class wheel{
+
         private int rim;
         private double tire;
+
+        wheel(int rim, double tire){
+            this.rim=rim;
+            this.tire=tire;
+        }
+
+        private int getRim(){
+            return this.rim;
+        }
+        private double getTire(){
+            return this.tire;
+        }
+    }
+
+    static class data{
+        private int chainring;
+        private int cog;
+        
+        private wheel wheeldata;
 
         data(int chainring, int cog){
             this.chainring=chainring;
@@ -16,21 +36,20 @@ class Gear{
         data(int chainring, int cog, int rim, double tire){
             this.chainring=chainring;
             this.cog=cog;
-            this.rim=rim;
-            this.tire=tire;
+            wheeldata=new wheel(rim,tire);
         }
 
         private int getChainring(){
-            return mydata.chainring;
+            return this.chainring;
         }
         private int getCog(){
-            return mydata.cog;
+            return this.cog;
         }
         private int getRim(){
-            return mydata.rim;
+            return wheeldata.getRim();
         }
         private double getTire(){
-            return mydata.tire;
+            return wheeldata.getTire();
         }
 
     }
